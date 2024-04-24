@@ -104,7 +104,7 @@ body {
     text-align: center;
 }
 
-.info{
+.info {
     width: 50%;
 }
 
@@ -199,25 +199,74 @@ h3 {
     color: var(--text-color);
 }
 
-
-
 .playbar {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     position: absolute;
     bottom: 0;
     background-color: var(--grayblue);
     width: 100%;
-    padding: 20px;
+    padding: 30px;
 }
 
-.songcontrols {
+.incovo {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+    top: 12px;
+    position: absolute;
+}
+
+.incovo .songinfo {
+    width: 40%;
+    position: absolute;
+    left: 0;
+    justify-content: center;
+    display: flex;
+}
+
+.incovo .songcontrols {
     display: flex;
     justify-content: center;
     gap: 15px;
+    position: absolute;
 }
+
+
+.songcontrols img {
+    cursor: pointer;
+}
+
+
+.volume {
+    position: absolute;
+    right: 10%;
+    width: 90px; /* Adjust width as needed */
+    height: 10px; /* Adjust height as needed */
+    cursor: pointer;
+}
+
+.volume-range {
+    border-radius: 23px;
+    appearance: none;
+    width: 100%; /* Match container width */
+    height: 100%; /* Match container height */
+    background: var(--dblue);
+  }
+  
+  .volume-range::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove default thumb styles */
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--lblue); /* Adjust thumb color */
+  }
+  
+
+  
 
 .seekbar {
     height: 2px;
@@ -227,16 +276,16 @@ h3 {
     bottom: 3px;
     position: absolute;
     border-radius: 12px;
-    margin :5px;
+    margin: 5px;
 }
 
-.circle img{
+.circle img {
     position: absolute;
     width: 12px;
     height: 12px;
     border-radius: 13px;
     bottom: -2.5px;
-    background-color: aliceblue;
+    background-color: rgba(240, 248, 255, 0.829);
     left: 0%;
     transition: left 0.7s;
 }

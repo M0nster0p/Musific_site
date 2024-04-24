@@ -41,8 +41,24 @@
     padding: 14px;
 }
 
+.hinvert:hover{
+    filter: invert(1);
+}
+
+.ltext{
+    opacity: 0.75;
+    color: var(--ltext-color);
+}
+
+.hglow:hover{
+    opacity: 1;
+    color: var(--text-color);
+}
+
+
 :root {
     --text-color: #fafafa;
+    --ltext-color:rgb(199, 196, 196);
     --bg-color: #282828;
     --dblue: #0c0032;
     --ug-color: #190061;

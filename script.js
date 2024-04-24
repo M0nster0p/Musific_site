@@ -1,9 +1,10 @@
 console.log("js linked")
+let currentSong = new Audio();
 
 async function getSongs() {
 
     try {
-        let a = await fetch("http://127.0.0.1:3000/Musific/test/");
+        let a = await fetch("http://127.0.0.1:3000/test/");
         let respond = await a.text();
 
         // Check if response is successful
@@ -34,26 +35,30 @@ async function getSongs() {
 }
 
 const playMusic = (track)=>{
-    let audio = new Audio("/test/" + track)
-    audio.play();
+    currentSong.src="/test/" + track;
+    currentSong.play();
+    play.src = "/assets/pause.svg"
+    document.querySelector(".songinfo").innerHTML = track;
+    currentSong.volume = 0.25;
 }
+
+
 
 
 async function main() {
 
-    let currentSong;
 
     let songs = await getSongs();
     console.log(songs);
 
     let songUl = document.querySelector(".songList").getElementsByTagName("ul")[0];
     for (const song of songs) {
-        songUl.innerHTML = songUl.innerHTML + `<li><img class="albumimg" src="/Musific/assets/hplay.svg" alt="">
+        songUl.innerHTML = songUl.innerHTML + `<li><img class="albumimg" src="/assets/hplay.svg" alt="">
                                 <div class="info">
                                     <div>${song.replaceAll("%20", " ")}</div>
                                     <div></div>
                                 </div>
-                                <img src="/Musific/assets/play.svg" alt="">
+                                <img src="/assets/play.svg" alt="play now">
                             </div>
 
         </li>`;
@@ -64,6 +69,17 @@ async function main() {
             console.log(e.querySelector(".info").firstElementChild.innerHTML )
             playMusic(e.querySelector(".info").firstElementChild.innerHTML)
         })
+    })
+
+    play.addEventListener("click", ()=>{
+        if(currentSong.paused){
+            currentSong.play();
+            play.src = "/assets/pause.svg"
+        }
+        else{
+            currentSong.pause();
+            play.src = "/assets/play.svg"
+        }
     })
 }
 
