@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musific</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="utilities.css">
+    <link rel="shortcut icon" href="/Musific/assets/favicon_svg.svg" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container flex bg-black prevent-select">
+        <div class="left rounded">
+            <div class="home margin padding bg-lblack overflow">
+                <div class="box1">
+
+                    <div class="logo">
+                        <img src="/Musific/assets/textlogo.svg" draggable="false" alt="logo">
+                    </div>
+
+                    <ul>
+                        <li><img class="invert" src="/Musific/assets/home.svg" alt="home" draggable="false">Home</li>
+                        <li><img class="invert" src="/Musific/assets/lens.svg" alt="lens" draggable="false">Search</li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="library bg-lblack overflow">
+                <div class="heading">
+                    <img class="invert" src="/Musific/assets/library.svg" alt="library" draggable="false">
+                    <h2>Your Library</h2>
+                </div>
+
+                <div class="songList" id="songList">
+                    <ul>
+                        
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer">
+                Made with ❤️‍🩹 in India
+            </div>
+
+        </div>
+
+        <div class="right rounded bg-lblack margin" style="margin: 14px 4px 0 0">
+            <div class="header padding">
+                <div class="arrows">
+                    <img class="invert" src="/Musific/assets/backarrow.svg" alt="back" draggable="false">
+                    <img class="invert" src="/Musific/assets/forwardarrow.svg" alt="forward" draggable="false">
+                </div>
+                <div class="buttons">
+                    <button class="localbtn">Offline</button>
+                    <button class="onlinebtn">Online</button>
+                </div>
+            </div>
+
+            <div class="mfu">
+                <h1>Made for you</h1>
+                <div class="cardContainer">
+                    <div class="card">
+                        <div class="play">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                color="#000000" fill="var(--dblue)">
+                                <circle cx="12" cy="12" r="10" stroke="var(--dblue)" stroke-width="1.5" />
+                                <path
+                                    d="M9.5 11.1998V12.8002C9.5 14.3195 9.5 15.0791 9.95576 15.3862C10.4115 15.6932 11.0348 15.3535 12.2815 14.6741L13.7497 13.8738C15.2499 13.0562 16 12.6474 16 12C16 11.3526 15.2499 10.9438 13.7497 10.1262L12.2815 9.32594C11.0348 8.6465 10.4115 8.30678 9.95576 8.61382C9.5 8.92086 9.5 9.6805 9.5 11.1998Z"
+                                    fill="var(--lblue)" />
+                            </svg>
+                        </div>
+                        <img src="/Musific/assets/forever-yours.jpeg" alt="forever-yours">
+                        <h3>Enduring Love</h3>
+                        <p>Forever Yours: Songs of true love's embrace. Find melodies that capture the magic of lasting
+                            devotion.</p>
+                    </div>
+
+
+
+                    <div class="card">
+                        <div class="play">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                color="#000000" fill="var(--dblue)">
+                                <circle cx="12" cy="12" r="10" stroke="var(--dblue)" stroke-width="1.5" />
+                                <path
+                                    d="M9.5 11.1998V12.8002C9.5 14.3195 9.5 15.0791 9.95576 15.3862C10.4115 15.6932 11.0348 15.3535 12.2815 14.6741L13.7497 13.8738C15.2499 13.0562 16 12.6474 16 12C16 11.3526 15.2499 10.9438 13.7497 10.1262L12.2815 9.32594C11.0348 8.6465 10.4115 8.30678 9.95576 8.61382C9.5 8.92086 9.5 9.6805 9.5 11.1998Z"
+                                    fill="var(--lblue)" />
+                            </svg>
+                        </div>
+                        <img src="/Musific/assets/music-disk.jpeg" alt="Music-Disk">
+                        <h3>Headphone Exploders</h3>
+                        <p>Warning: May cause uncontrollable dancing and spontaneous singalongs.</p>
+                    </div>
+
+
+
+                    <div class="card">
+                        <div class="play">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                color="#000000" fill="var(--dblue)">
+                                <circle cx="12" cy="12" r="10" stroke="var(--dblue)" stroke-width="1.5" />
+                                <path
+                                    d="M9.5 11.1998V12.8002C9.5 14.3195 9.5 15.0791 9.95576 15.3862C10.4115 15.6932 11.0348 15.3535 12.2815 14.6741L13.7497 13.8738C15.2499 13.0562 16 12.6474 16 12C16 11.3526 15.2499 10.9438 13.7497 10.1262L12.2815 9.32594C11.0348 8.6465 10.4115 8.30678 9.95576 8.61382C9.5 8.92086 9.5 9.6805 9.5 11.1998Z"
+                                    fill="var(--lblue)" />
+                            </svg>
+                        </div>
+                        <img src="/Musific/assets/music-disk.jpeg" alt="Music-Disk">
+                        <h3>Headphone Exploders</h3>
+                        <p>Warning: May cause uncontrollable dancing and spontaneous singalongs.</p>
+                    </div>
+
+
+
+                    <div class="card">
+                        <div class="play">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                color="#000000" fill="var(--dblue)">
+                                <circle cx="12" cy="12" r="10" stroke="var(--dblue)" stroke-width="1.5" />
+                                <path
+                                    d="M9.5 11.1998V12.8002C9.5 14.3195 9.5 15.0791 9.95576 15.3862C10.4115 15.6932 11.0348 15.3535 12.2815 14.6741L13.7497 13.8738C15.2499 13.0562 16 12.6474 16 12C16 11.3526 15.2499 10.9438 13.7497 10.1262L12.2815 9.32594C11.0348 8.6465 10.4115 8.30678 9.95576 8.61382C9.5 8.92086 9.5 9.6805 9.5 11.1998Z"
+                                    fill="var(--lblue)" />
+                            </svg>
+                        </div>
+                        <img src="/Musific/assets/music-disk.jpeg" alt="Music-Disk">
+                        <h3>Headphone Exploders</h3>
+                        <p>Warning: May cause uncontrollable dancing and spontaneous singalongs.</p>
+                    </div>
+
+
+
+                    <div class="card">
+                        <div class="play">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                color="#000000" fill="var(--dblue)">
+                                <circle cx="12" cy="12" r="10" stroke="var(--dblue)" stroke-width="1.5" />
+                                <path
+                                    d="M9.5 11.1998V12.8002C9.5 14.3195 9.5 15.0791 9.95576 15.3862C10.4115 15.6932 11.0348 15.3535 12.2815 14.6741L13.7497 13.8738C15.2499 13.0562 16 12.6474 16 12C16 11.3526 15.2499 10.9438 13.7497 10.1262L12.2815 9.32594C11.0348 8.6465 10.4115 8.30678 9.95576 8.61382C9.5 8.92086 9.5 9.6805 9.5 11.1998Z"
+                                    fill="var(--lblue)" />
+                            </svg>
+                        </div>
+                        <img src="/Musific/assets/music-disk.jpeg" alt="Music-Disk">
+                        <h3>Headphone Exploders</h3>
+                        <p>Warning: May cause uncontrollable dancing and spontaneous singalongs.</p>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="playbar">
+
+                <div class="songinfo"></div>
+
+                <div class="songcontrols">
+                    <img src="/Musific/assets/previous.svg" alt="previous song">
+                    <img src="/Musific/assets/play.svg" alt="play/pause song">
+                    <img src="/Musific/assets/next.svg" alt="next song">
+                </div>
+
+                <div class="seekbar">
+                    <div class="circle">
+                        <img src="/Musific/assets/disk.svg" alt="disk">
+                    </div>
+                </div>
+
+
+                <div class="timebar"></div>
+            </div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

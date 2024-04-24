@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DotGothic16&family=Turret+Road:wght@200;300;400;500;700;800&display=swap');
+
+.prevent-select {
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+}
+
+.flex {
+    display: flex;
+}
+
+.overflow {
+    overflow: hidden;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.item-center {
+    align-items: center;
+}
+
+.invert {
+    filter: invert(1);
+}
+
+.rounded {
+    border-radius: 20px;
+}
+
+.margin {
+    margin: 4px;
+}
+
+.padding {
+    padding: 14px;
+}
+
+:root {
+    --text-color: #fafafa;
+    --bg-color: #282828;
+    --dblue: #0c0032;
+    --ug-color: #190061;
+    --blue: #240090;
+    --lblue: #3500d3;
+    --grayblue: #403a50;
+}
+
+::-webkit-scrollbar {
+  width: 5px; /* Adjust to your desired minimum width */
+}
+
+/* For Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 5px; /* Adjust to your desired minimum width */
+}
+
+/* For Firefox */
+scrollbar-thin {  /* This might not be supported in all browsers  */
+  width: 5px; /* Adjust to your desired minimum width */
+}
