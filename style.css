@@ -241,7 +241,7 @@ h3 {
 
 .countUptpDuration{
     position: absolute;
-    left: 61px;
+    left: 50px;
     bottom: 2px;
 }
 .durationOfSong{
@@ -293,6 +293,6 @@ h3 {
     border-radius: 13px;
     bottom: -2.5px;
     background-color: rgba(240, 248, 255, 0.829);
-    left: 0%;
+    right: 0%;
     transition: left 0.7s;
 }
