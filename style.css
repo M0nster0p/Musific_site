@@ -239,38 +239,45 @@ h3 {
     cursor: pointer;
 }
 
-
-.volume {
+.countUptpDuration{
     position: absolute;
-    right: 10%;
-    width: 90px; /* Adjust width as needed */
-    height: 10px; /* Adjust height as needed */
-    cursor: pointer;
+    left: 61px;
+    bottom: 2px;
+}
+.durationOfSong{
+    position: absolute;
+    right: 51px;
+    bottom: 2px;
 }
 
-.volume-range {
+.volume-bar {
+    width: 200px;
+    height: 20px;
+    background-color: var(--dblue);
+    position: relative;
+    right: -341px;
     border-radius: 23px;
-    appearance: none;
-    width: 100%; /* Match container width */
-    height: 100%; /* Match container height */
-    background: var(--dblue);
-  }
-  
-  .volume-range::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Remove default thumb styles */
-    appearance: none;
-    width: 12px;
-    height: 12px;
+}
+.volume-fill {
+    height: 100%;
+    background-color: var(--blue);
+    border-radius: 23px;
+}
+.volume-handle {
+    width: 20px;
+    height: 20px;
+    background-color: #2196F3;
     border-radius: 50%;
-    background-color: var(--lblue); /* Adjust thumb color */
-  }
-  
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+}
 
   
 
 .seekbar {
     height: 2px;
-    width: 85%;
+    width: 80%;
     background-color: darkgray;
     padding: 2px;
     bottom: 3px;
