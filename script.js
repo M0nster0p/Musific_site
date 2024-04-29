@@ -157,6 +157,7 @@ async function main() {
     currentSong.addEventListener("ended", () => {
         playNextSong();
     });
+    
 }
 
 main();
