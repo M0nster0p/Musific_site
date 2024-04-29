@@ -1,5 +1,6 @@
 console.log("js linked");
 let currentSong = new Audio();
+let songs = []; // Declare songs as a global variable
 
 async function getSongs() {
     try {
@@ -15,7 +16,7 @@ async function getSongs() {
         div.innerHTML = respond;
 
         let as = div.getElementsByTagName("a");
-        let songs = [];
+        songs = [];
 
         for (let index = 0; index < as.length; index++) {
             const element = as[index];
@@ -54,6 +55,17 @@ currentSong.addEventListener("timeupdate", () => {
     updateRemainingTime();
 });
 
+// Function to play the next song
+const playNextSong = () => {
+    // Get the index of the current song
+    const currentIndex = songs.findIndex(song => currentSong.src.includes(song));
+
+    // Calculate the index of the next song, looping back to the beginning if necessary
+    const nextIndex = (currentIndex + 1) % songs.length;
+
+    // Play the next song
+    playMusic(songs[nextIndex]);
+}
 
 function updateRemainingTime() {
     const currentTime = currentSong.currentTime;
@@ -64,17 +76,14 @@ function updateRemainingTime() {
     document.querySelector(".circle img").style.right = (remainingTime / duration) * 100 + "%";
 }
 
-
 function formatTime(time) {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-
-
 async function main() {
-    let songs = await getSongs();
+    await getSongs(); // Fetch songs and populate the global songs array
     console.log(songs);
     playMusic(songs[0], true);
 
@@ -142,9 +151,12 @@ async function main() {
             currentSong.pause();
             play.src = "/assets/play.svg"
         }
-    })
+    });
+
+    // Automatically play the next song when the current one ends
+    currentSong.addEventListener("ended", () => {
+        playNextSong();
+    });
 }
-
-
 
 main();
