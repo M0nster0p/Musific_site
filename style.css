@@ -109,6 +109,7 @@ body {
 }
 
 .cardContainer {
+    padding-top: 10px;
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
@@ -239,12 +240,13 @@ h3 {
     cursor: pointer;
 }
 
-.countUptpDuration{
+.countUptpDuration {
     position: absolute;
     left: 50px;
     bottom: 2px;
 }
-.durationOfSong{
+
+.durationOfSong {
     position: absolute;
     right: 51px;
     bottom: 2px;
@@ -258,11 +260,13 @@ h3 {
     right: -341px;
     border-radius: 23px;
 }
+
 .volume-fill {
     height: 100%;
     background-color: var(--blue);
     border-radius: 23px;
 }
+
 .volume-handle {
     width: 20px;
     height: 20px;
@@ -273,7 +277,7 @@ h3 {
     cursor: pointer;
 }
 
-  
+
 
 .seekbar {
     height: 2px;
