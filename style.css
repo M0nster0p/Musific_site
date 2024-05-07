@@ -199,6 +199,12 @@ h3 {
     transition: all 100ms ease-in-out;
     color: var(--text-color);
 }
+.seektime{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+}
 
 .playbar {
     display: flex;
@@ -208,57 +214,43 @@ h3 {
     bottom: 0;
     background-color: var(--grayblue);
     width: 100%;
-    padding: 30px;
-}
+    padding: 20px 15px 0 0;}
 
+/* Adjusted positioning for incovo container */
 .incovo {
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    gap: 50px;
-    top: 12px;
-    position: absolute;
+    justify-content: space-between;
+    align-items: center; /* Added align-items */
+    gap: 10px; /* Adjusted gap */
 }
 
-.incovo .songinfo {
-    width: 40%;
-    position: absolute;
-    left: 0;
-    justify-content: center;
-    display: flex;
-}
-
+/* Adjusted positioning for songinfo and songcontrols */
+.incovo .songinfo,
 .incovo .songcontrols {
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    position: absolute;
+    align-items: center; /* Added align-items */
+    position: relative; /* Removed absolute positioning */
 }
-
 
 .songcontrols img {
     cursor: pointer;
 }
 
-.countUptpDuration {
-    position: absolute;
-    left: 50px;
-    bottom: 2px;
-}
-
+/* Adjusted positioning for countUptpDuration and durationOfSong */
+.countUptpDuration,
 .durationOfSong {
-    position: absolute;
-    right: 51px;
-    bottom: 2px;
+    position: relative; /* Changed to relative positioning */
+    margin: 0 10px; /* Added margin for spacing */
 }
 
+/* Adjusted positioning for volume-bar */
 .volume-bar {
-    width: 200px;
-    height: 20px;
+    width: 150px;
+    height: 15px;
     background-color: var(--dblue);
     position: relative;
-    right: -341px;
-    border-radius: 23px;
+    border-radius: 20px;
 }
 
 .volume-fill {
@@ -273,21 +265,19 @@ h3 {
     background-color: #2196F3;
     border-radius: 50%;
     position: absolute;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
     cursor: pointer;
 }
 
-
-
+/* Adjusted positioning for seekbar */
 .seekbar {
-    height: 2px;
+    height: 8px;
     width: 80%;
     background-color: darkgray;
-    padding: 2px;
-    bottom: 3px;
-    position: absolute;
+    position: relative;
     border-radius: 12px;
-    margin: 5px;
+    margin: 5px 0; /* Adjusted margin */
     cursor: pointer;
 }
 
@@ -295,9 +285,34 @@ h3 {
     position: absolute;
     width: 12px;
     height: 12px;
-    border-radius: 13px;
-    bottom: -2.5px;
+    border-radius: 50%;
+    bottom: -2px;
     background-color: rgba(240, 248, 255, 0.829);
-    right: 0%;
+    right: 0;
     transition: right 0.5s;
+}
+
+.more{
+    display: none ;
+}
+
+@media screen and (max-width:1000px) {
+    .left{
+        background-color: aqua;
+        position: absolute;
+        left: -50%;
+        transition: all 0.5s ease-in-out;
+        z-index: 1;
+    }
+
+    .right{
+        width: 100vw;
+        height: 98vh;
+    }
+    .more{
+        display:block ;
+    }
+    .playbar{
+        
+    }
 }

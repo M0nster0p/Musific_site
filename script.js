@@ -140,13 +140,18 @@ async function main() {
             newVolume = 1;
         }
         volume = newVolume;
-        volumeFill.style.width = (volume * 100) + '%';
-        volumeHandle.style.left = (volumeBar.offsetWidth * volume - volumeHandle.offsetWidth / 2) + 'px';
+        
+        // Update volume fill width and volume handle position
+        const volumeFillWidth = volume * volumeBar.offsetWidth;
+        volumeFill.style.width = volumeFillWidth + 'px';
+        volumeHandle.style.left = (volumeFillWidth - volumeHandle.offsetWidth / 2) + 'px';
+        
         currentSong.volume = volume; // Update volume of the audio element
-
-        // Update volume bar
-        volumeBar.value = volume * 100;
+    
+        // Update volume bar value (optional)
+        // volumeBar.value = volume * 100;
     }
+    
 
     function handleRelease() {
         window.removeEventListener('mousemove', handleMove);
