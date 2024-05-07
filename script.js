@@ -70,6 +70,18 @@ const playNextSong = () => {
     playMusic(songs[nextIndex]);
 }
 
+// Function to play the previous song
+const playPreviousSong = () => {
+    // Get the index of the current song
+    const currentIndex = songs.findIndex(song => currentSong.src.includes(song));
+
+    // Calculate the index of the previous song, looping back to the end if necessary
+    const previousIndex = (currentIndex - 1 + songs.length) % songs.length;
+
+    // Play the previous song
+    playMusic(songs[previousIndex]);
+}
+
 function updateRemainingTime() {
     const currentTime = currentSong.currentTime;
     const duration = currentSong.duration;
@@ -131,7 +143,7 @@ async function main() {
         volumeFill.style.width = (volume * 100) + '%';
         volumeHandle.style.left = (volumeBar.offsetWidth * volume - volumeHandle.offsetWidth / 2) + 'px';
         currentSong.volume = volume; // Update volume of the audio element
-    
+
         // Update volume bar
         volumeBar.value = volume * 100;
     }
@@ -167,40 +179,53 @@ async function main() {
     document.querySelector(".seekbar").addEventListener("click", e => {
         let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
         document.querySelector(".circle img").style.right = percent + "%";
-        currentSong.currentTime = ((currentSong.duration) * percent)/100;
+        currentSong.currentTime = ((currentSong.duration) * percent) / 100;
     })
 
     // Keyboard media controls
     document.addEventListener('keydown', handleMediaControls);
 
     function handleMediaControls(event) {
-        switch (event.key) {
-            case 'ArrowLeft':
-                currentSong.currentTime -= 10; // Rewind 10 seconds
-                break;
-            case 'ArrowRight':
-                currentSong.currentTime += 10; // Fast forward 10 seconds
-                break;
-            case ' ':
-                event.preventDefault(); // Prevent scrolling on space key
-                if (currentSong.paused) {
-                    currentSong.play();
-                    play.src = "/assets/pause.svg";
-                } else {
-                    currentSong.pause();
-                    play.src = "/assets/play.svg";
-                }
-                break;
-            case 'ArrowUp':
-                currentSong.volume = Math.min(1, currentSong.volume + 0.1); // Increase volume by 10%
-                updateVolumeBar();
-                break;
-            case 'ArrowDown':
-                currentSong.volume = Math.max(0, currentSong.volume - 0.1); // Decrease volume by 10%
-                updateVolumeBar();
-                break;
-            default:
-                break;
+        if (event.ctrlKey) {
+            switch (event.key) {
+                case 'ArrowLeft':
+                    playPreviousSong(); // Play the previous song
+                    break;
+                case 'ArrowRight':
+                    playNextSong(); // Play the next song
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            switch (event.key) {
+                case 'ArrowLeft':
+                    currentSong.currentTime -= 10; // Rewind 10 seconds
+                    break;
+                case 'ArrowRight':
+                    currentSong.currentTime += 10; // Fast forward 10 seconds
+                    break;
+                case ' ':
+                    event.preventDefault(); // Prevent scrolling on space key
+                    if (currentSong.paused) {
+                        currentSong.play();
+                        play.src = "/assets/pause.svg";
+                    } else {
+                        currentSong.pause();
+                        play.src = "/assets/play.svg";
+                    }
+                    break;
+                case 'ArrowUp':
+                    currentSong.volume = Math.min(1, currentSong.volume + 0.1); // Increase volume by 10%
+                    updateVolumeBar();
+                    break;
+                case 'ArrowDown':
+                    currentSong.volume = Math.max(0, currentSong.volume - 0.1); // Decrease volume by 10%
+                    updateVolumeBar();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
