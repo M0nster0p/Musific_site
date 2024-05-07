@@ -288,6 +288,7 @@ h3 {
     position: absolute;
     border-radius: 12px;
     margin: 5px;
+    cursor: pointer;
 }
 
 .circle img {

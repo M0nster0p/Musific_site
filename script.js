@@ -41,7 +41,7 @@ const playMusic = (track, pause = false) => {
     currentSong.src = "/test/" + track;
     if (!pause) {
         currentSong.play();
-        play.src = "/assets/pause.svg"
+        play.src = "/assets/pause.svg";
     }
     document.querySelector(".songinfo").innerHTML = decodeURI(track);
     // currentSong.volume = 0.25;
@@ -131,6 +131,9 @@ async function main() {
         volumeFill.style.width = (volume * 100) + '%';
         volumeHandle.style.left = (volumeBar.offsetWidth * volume - volumeHandle.offsetWidth / 2) + 'px';
         currentSong.volume = volume; // Update volume of the audio element
+    
+        // Update volume bar
+        volumeBar.value = volume * 100;
     }
 
     function handleRelease() {
@@ -161,6 +164,53 @@ async function main() {
         playNextSong();
     });
 
+    document.querySelector(".seekbar").addEventListener("click", e => {
+        let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
+        document.querySelector(".circle img").style.right = percent + "%";
+        currentSong.currentTime = ((currentSong.duration) * percent)/100;
+    })
+
+    // Keyboard media controls
+    document.addEventListener('keydown', handleMediaControls);
+
+    function handleMediaControls(event) {
+        switch (event.key) {
+            case 'ArrowLeft':
+                currentSong.currentTime -= 10; // Rewind 10 seconds
+                break;
+            case 'ArrowRight':
+                currentSong.currentTime += 10; // Fast forward 10 seconds
+                break;
+            case ' ':
+                event.preventDefault(); // Prevent scrolling on space key
+                if (currentSong.paused) {
+                    currentSong.play();
+                    play.src = "/assets/pause.svg";
+                } else {
+                    currentSong.pause();
+                    play.src = "/assets/play.svg";
+                }
+                break;
+            case 'ArrowUp':
+                currentSong.volume = Math.min(1, currentSong.volume + 0.1); // Increase volume by 10%
+                updateVolumeBar();
+                break;
+            case 'ArrowDown':
+                currentSong.volume = Math.max(0, currentSong.volume - 0.1); // Decrease volume by 10%
+                updateVolumeBar();
+                break;
+            default:
+                break;
+        }
+    }
+
+    // Function to update the volume bar
+    function updateVolumeBar() {
+        // Update volume bar
+        volumeFill.style.width = (currentSong.volume * 100) + '%';
+        volumeHandle.style.left = (volumeBar.offsetWidth * currentSong.volume - volumeHandle.offsetWidth / 2) + 'px';
+        volumeBar.value = currentSong.volume * 100;
+    }
 }
 
 main();
