@@ -140,18 +140,18 @@ async function main() {
             newVolume = 1;
         }
         volume = newVolume;
-        
+
         // Update volume fill width and volume handle position
         const volumeFillWidth = volume * volumeBar.offsetWidth;
         volumeFill.style.width = volumeFillWidth + 'px';
         volumeHandle.style.left = (volumeFillWidth - volumeHandle.offsetWidth / 2) + 'px';
-        
+
         currentSong.volume = volume; // Update volume of the audio element
-    
+
         // Update volume bar value (optional)
         // volumeBar.value = volume * 100;
     }
-    
+
 
     function handleRelease() {
         window.removeEventListener('mousemove', handleMove);
@@ -199,6 +199,14 @@ async function main() {
                 case 'ArrowRight':
                     playNextSong(); // Play the next song
                     break;
+                case 'ArrowUp':
+                    currentSong.volume = Math.min(1, currentSong.volume + 0.1); // Increase volume by 10%
+                    updateVolumeBar();
+                    break;
+                case 'ArrowDown':
+                    currentSong.volume = Math.max(0, currentSong.volume - 0.1); // Decrease volume by 10%
+                    updateVolumeBar();
+                    break;
                 default:
                     break;
             }
@@ -220,18 +228,12 @@ async function main() {
                         play.src = "/assets/play.svg";
                     }
                     break;
-                case 'ArrowUp':
-                    currentSong.volume = Math.min(1, currentSong.volume + 0.1); // Increase volume by 10%
-                    updateVolumeBar();
-                    break;
-                case 'ArrowDown':
-                    currentSong.volume = Math.max(0, currentSong.volume - 0.1); // Decrease volume by 10%
-                    updateVolumeBar();
-                    break;
                 default:
                     break;
             }
         }
+
+
     }
 
     // Function to update the volume bar
@@ -246,13 +248,13 @@ async function main() {
 
     document.querySelector(".more").addEventListener("click", () => {
         const leftMenu = document.querySelector(".left");
-        
+
         if (!isMenuOpen) {
             leftMenu.style.left = 0;
         } else {
             leftMenu.style.left = -50 + "%";
         }
-        
+
         isMenuOpen = !isMenuOpen;
     });
 
