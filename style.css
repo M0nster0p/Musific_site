@@ -29,9 +29,9 @@ body {
 
 .right {
     width: 75vw;
-    margin: 26px 0;
     position: relative;
     overflow: hidden;
+    height: 98vh;
 }
 
 .home ul li {
@@ -59,14 +59,6 @@ body {
     justify-content: center;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.719);
-}
-
-.library {
-    min-height: 70vh;
-    margin: 4px;
-    padding: 3px 14px;
-    position: relative;
-    overflow: hidden;
 }
 
 .arrows img {
@@ -119,10 +111,17 @@ body {
     max-height: 50vh;
 }
 
+.library {
+    max-height: 70vh;
+    max-height: 90vh;
+    margin: 4px;
+    padding: 3px 14px;
+    position: relative;
+}
+
 .songList {
-    max-height: 60vh;
-    align-items: center;
-    overflow-y: scroll;
+    max-height: 75vh;
+    overflow-y: auto;
 }
 
 .mfu {
@@ -199,7 +198,8 @@ h3 {
     transition: all 100ms ease-in-out;
     color: var(--text-color);
 }
-.seektime{
+
+.seektime {
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -214,23 +214,28 @@ h3 {
     bottom: 0;
     background-color: var(--grayblue);
     width: 100%;
-    padding: 20px 15px 0 0;}
+    padding: 20px 15px 0 0;
+}
 
 /* Adjusted positioning for incovo container */
 .incovo {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center; /* Added align-items */
-    gap: 10px; /* Adjusted gap */
+    justify-content: space-around;
+    align-items: center;
+    /* Added align-items */
+    gap: 10px;
+    /* Adjusted gap */
 }
 
 /* Adjusted positioning for songinfo and songcontrols */
 .incovo .songinfo,
 .incovo .songcontrols {
     display: flex;
-    align-items: center; /* Added align-items */
-    position: relative; /* Removed absolute positioning */
+    align-items: center;
+    /* Added align-items */
+    position: relative;
+    /* Removed absolute positioning */
 }
 
 .songcontrols img {
@@ -240,8 +245,10 @@ h3 {
 /* Adjusted positioning for countUptpDuration and durationOfSong */
 .countUptpDuration,
 .durationOfSong {
-    position: relative; /* Changed to relative positioning */
-    margin: 0 10px; /* Added margin for spacing */
+    position: relative;
+    /* Changed to relative positioning */
+    margin: 0 10px;
+    /* Added margin for spacing */
 }
 
 /* Adjusted positioning for volume-bar */
@@ -266,7 +273,8 @@ h3 {
     border-radius: 50%;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%); /* Center vertically */
+    transform: translateY(-50%);
+    /* Center vertically */
     cursor: pointer;
 }
 
@@ -277,7 +285,8 @@ h3 {
     background-color: darkgray;
     position: relative;
     border-radius: 12px;
-    margin: 5px 0; /* Adjusted margin */
+    margin: 5px 0;
+    /* Adjusted margin */
     cursor: pointer;
 }
 
@@ -292,27 +301,42 @@ h3 {
     transition: right 0.5s;
 }
 
-.more{
-    display: none ;
+.more {
+    display: none;
+}
+
+@media screen and (max-height: 970px) and (min-height: 600px) {
+    .songList {
+        max-height: 60vh; /* Adjusted max-height */
+    }
+    .right {
+        width: 100vw;
+    }
 }
 
 @media screen and (max-width:1000px) {
-    .left{
-        background-color: aqua;
+    .left {
+        background-color: var(--dblue);
         position: absolute;
         left: -50%;
         transition: all 0.5s ease-in-out;
         z-index: 1;
+        min-width: 30vw;
+
     }
 
-    .right{
+    .right {
         width: 100vw;
         height: 98vh;
     }
-    .more{
-        display:block ;
+
+    .more {
+        display: block;
     }
-    .playbar{
-        
+
+    .playbar {
+        height: 104px;
+        padding: 10px 0;
+        gap: 12px;
     }
 }

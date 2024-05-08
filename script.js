@@ -241,6 +241,21 @@ async function main() {
         volumeHandle.style.left = (volumeBar.offsetWidth * currentSong.volume - volumeHandle.offsetWidth / 2) + 'px';
         volumeBar.value = currentSong.volume * 100;
     }
+
+    let isMenuOpen = false;
+
+    document.querySelector(".more").addEventListener("click", () => {
+        const leftMenu = document.querySelector(".left");
+        
+        if (!isMenuOpen) {
+            leftMenu.style.left = 0;
+        } else {
+            leftMenu.style.left = -50 + "%";
+        }
+        
+        isMenuOpen = !isMenuOpen;
+    });
+
 }
 
 main();
