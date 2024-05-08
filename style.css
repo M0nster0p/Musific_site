@@ -32,6 +32,7 @@ body {
     position: relative;
     overflow: hidden;
     height: 98vh;
+    margin: 7px 4px 0 0
 }
 
 .home ul li {
@@ -112,7 +113,7 @@ body {
 }
 
 .library {
-    max-height: 70vh;
+    min-height: 70vh;
     max-height: 90vh;
     margin: 4px;
     padding: 3px 14px;
@@ -305,14 +306,15 @@ h3 {
     display: none;
 }
 
-@media screen and (max-height: 970px) and (min-height: 600px) {
+@media screen and (max-height: 670px) and (min-height: 600px) {
     .songList {
         max-height: 60vh;
         /* Adjusted max-height */
     }
 
-    .right {
+    .right{
         width: 100vw;
+        margin: 7px 4px 0 5px;
     }
 }
 
@@ -320,21 +322,25 @@ h3 {
     .left {
         background-color: var(--dblue);
         position: absolute;
-        left: -70%;
+        left: -85%;
         transition: all 0.5s ease-in-out;
         z-index: 1;
         min-width: 70vw;
 
     }
-    .library{
+
+    .library {
         min-height: 72vh;
     }
-    .songList{
+
+    .songList {
         max-height: 72vh;
     }
+
     .right {
         width: 100vw;
         height: 98vh;
+        margin: 7px 4px 0 5px;
     }
 
     .more {
@@ -345,5 +351,26 @@ h3 {
         height: 104px;
         padding: 10px 0;
         gap: 12px;
+    }
+
+    .seekbar {
+        width: 65%;
+    }
+
+    .incovo .songinfo,
+    .incovo .songcontrols {
+        width: 50vw;
+    }
+    .incovo {
+        width: 95%;
+        display: flex;
+        align-items: center;
+        top: 25px;
+        position: absolute;
+    }
+
+    .seektime {
+        position: absolute;
+        bottom: 5px;
     }
 }

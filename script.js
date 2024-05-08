@@ -249,7 +249,7 @@ async function main() {
 // Function to close the menu
 function closeMenu() {
     const leftMenu = document.querySelector(".left");
-    leftMenu.style.left = -70 + "%";
+    leftMenu.style.left = -85 + "%";
     isMenuOpen = false;
 }
 
@@ -259,7 +259,7 @@ document.querySelector(".more").addEventListener("click", () => {
     if (!isMenuOpen) {
         leftMenu.style.left = 0;
     } else {
-        leftMenu.style.left = -70 + "%";
+        leftMenu.style.left = -85 + "%";
     }
 
     isMenuOpen = !isMenuOpen;
