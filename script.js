@@ -246,17 +246,31 @@ async function main() {
 
     let isMenuOpen = false;
 
-    document.querySelector(".more").addEventListener("click", () => {
-        const leftMenu = document.querySelector(".left");
+// Function to close the menu
+function closeMenu() {
+    const leftMenu = document.querySelector(".left");
+    leftMenu.style.left = -70 + "%";
+    isMenuOpen = false;
+}
 
-        if (!isMenuOpen) {
-            leftMenu.style.left = 0;
-        } else {
-            leftMenu.style.left = -50 + "%";
-        }
+document.querySelector(".more").addEventListener("click", () => {
+    const leftMenu = document.querySelector(".left");
 
-        isMenuOpen = !isMenuOpen;
-    });
+    if (!isMenuOpen) {
+        leftMenu.style.left = 0;
+    } else {
+        leftMenu.style.left = -70 + "%";
+    }
+
+    isMenuOpen = !isMenuOpen;
+});
+
+document.querySelector(".logo").addEventListener("click", () => {
+    if (isMenuOpen) {
+        closeMenu();
+    }
+});
+
 
 }
 
