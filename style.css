@@ -232,10 +232,12 @@ h3 {
 /* Adjusted positioning for songinfo and songcontrols */
 .incovo .songinfo,
 .incovo .songcontrols {
+    width: 20vw;
     display: flex;
     align-items: center;
     /* Added align-items */
     position: relative;
+    gap: 37px;
     /* Removed absolute positioning */
 }
 
@@ -348,7 +350,7 @@ h3 {
     }
 
     .playbar {
-        height: 104px;
+        height: 14vh;
         padding: 10px 0;
         gap: 12px;
     }
@@ -356,10 +358,14 @@ h3 {
     .seekbar {
         width: 65%;
     }
+    .incovo .songinfo{
+        overflow: hidden;
+    }
 
     .incovo .songinfo,
     .incovo .songcontrols {
         width: 50vw;
+        gap: 18px;
     }
     .incovo {
         width: 95%;
