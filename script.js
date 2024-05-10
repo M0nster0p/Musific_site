@@ -176,6 +176,14 @@ async function main() {
         }
     });
 
+    previous.addEventListener("click", ()=>{
+        playPreviousSong();
+    })
+    next.addEventListener("click", ()=>{
+        playNextSong();
+    })
+
+
     // Automatically play the next song when the current one ends
     currentSong.addEventListener("ended", () => {
         playNextSong();
