@@ -4,7 +4,7 @@ let songs = []; // Declare songs as a global variable
 
 async function getSongs() {
     try {
-        let a = await fetch("http://127.0.0.1:3000/test/");
+        let a = await fetch("http://127.0.0.1:3000/songs/op/");     //song address
         let respond = await a.text();
 
         // Check if response is successful
@@ -22,10 +22,10 @@ async function getSongs() {
             const element = as[index];
             // Modify filter condition based on your song link format
             if (element.href.endsWith(".m4a")) {
-                songs.push(element.href.split("/test/")[1]);
+                songs.push(element.href.split("/songs/op/")[1]);     //song address
             }
             if (element.href.endsWith(".mp3")) {
-                songs.push(element.href.split("/test/")[1]);
+                songs.push(element.href.split("/songs/op/")[1]);     //song address
             }
         }
 
@@ -38,7 +38,7 @@ async function getSongs() {
 }
 
 const playMusic = (track, pause = false) => {
-    currentSong.src = "/test/" + track;
+    currentSong.src = "/songs/op/" + track;     //song address
     if (!pause) {
         currentSong.play();
         play.src = "/assets/pause.svg";
@@ -278,6 +278,7 @@ document.querySelector(".logo").addEventListener("click", () => {
         closeMenu();
     }
 });
+
 
 
 }
