@@ -1,10 +1,11 @@
 console.log("js linked");
 let currentSong = new Audio();
 let songs = []; // Declare songs as a global variable
-
-async function getSongs() {
+let curFolder;
+async function getSongs(folder) {
+    curFolder = folder;
     try {
-        let a = await fetch("http://127.0.0.1:3000/songs/op/");     //song address
+        let a = await fetch(`http://127.0.0.1:3000/songs/${folder}/`);     //song address
         let respond = await a.text();
 
         // Check if response is successful
@@ -22,10 +23,10 @@ async function getSongs() {
             const element = as[index];
             // Modify filter condition based on your song link format
             if (element.href.endsWith(".m4a")) {
-                songs.push(element.href.split("/songs/op/")[1]);     //song address
+                songs.push(element.href.split(`songs/${folder}/`)[1]);     //song address
             }
             if (element.href.endsWith(".mp3")) {
-                songs.push(element.href.split("/songs/op/")[1]);     //song address
+                songs.push(element.href.split(`songs/${folder}/`)[1]);     //song address
             }
         }
 
@@ -38,7 +39,7 @@ async function getSongs() {
 }
 
 const playMusic = (track, pause = false) => {
-    currentSong.src = "/songs/op/" + track;     //song address
+    currentSong.src = `/songs/${curFolder}/` + track;     //song address
     if (!pause) {
         currentSong.play();
         play.src = "/assets/pause.svg";
@@ -97,8 +98,11 @@ function formatTime(time) {
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
+
+
+
 async function main() {
-    await getSongs(); // Fetch songs and populate the global songs array
+    await getSongs("op"); // Fetch songs and populate the global songs array
     console.log(songs);
     playMusic(songs[0], true);
 
@@ -279,6 +283,45 @@ document.querySelector(".logo").addEventListener("click", () => {
     }
 });
 
+
+document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => {
+        const folder = card.dataset.folder;
+        getSongs(folder)
+            .then(newSongs => {
+                // Update the global songs array
+                songs = newSongs;
+                // Update the playlist UI with the new songs
+                updatePlaylistUI();
+                // Play the first song from the updated playlist
+                playMusic(songs[0], true);
+            })
+            .catch(error => {
+                console.error("Error updating playlist:", error);
+            });
+    });
+});
+
+function updatePlaylistUI() {
+    const songUl = document.querySelector(".songList").getElementsByTagName("ul")[0];
+    songUl.innerHTML = ""; // Clear the existing playlist
+    for (const song of songs) {
+        songUl.innerHTML += `<li><img class="albumimg" src="/assets/hplay.svg" alt="">
+                                <div class="info">
+                                    <div>${song.replaceAll("%20", " ")}</div>
+                                    <div></div>
+                                </div>
+                                <img src="/assets/play.svg" alt="play now">
+                            </li>`;
+    }
+
+    // Reattach event listeners to the new playlist items
+    Array.from(songUl.getElementsByTagName("li")).forEach(li => {
+        li.addEventListener("click", () => {
+            playMusic(li.querySelector(".info").firstElementChild.innerHTML);
+        });
+    });
+}
 
 
 }
