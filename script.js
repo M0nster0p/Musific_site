@@ -101,6 +101,7 @@ function formatTime(time) {
 
 
 
+
 async function main() {
     await getSongs("op"); // Fetch songs and populate the global songs array
     console.log(songs);
@@ -180,10 +181,10 @@ async function main() {
         }
     });
 
-    previous.addEventListener("click", ()=>{
+    previous.addEventListener("click", () => {
         playPreviousSong();
     })
-    next.addEventListener("click", ()=>{
+    next.addEventListener("click", () => {
         playNextSong();
     })
 
@@ -258,70 +259,71 @@ async function main() {
 
     let isMenuOpen = false;
 
-// Function to close the menu
-function closeMenu() {
-    const leftMenu = document.querySelector(".left");
-    leftMenu.style.left = -85 + "%";
-    isMenuOpen = false;
-}
-
-document.querySelector(".more").addEventListener("click", () => {
-    const leftMenu = document.querySelector(".left");
-
-    if (!isMenuOpen) {
-        leftMenu.style.left = 0;
-    } else {
+    // Function to close the menu
+    function closeMenu() {
+        const leftMenu = document.querySelector(".left");
         leftMenu.style.left = -85 + "%";
+        isMenuOpen = false;
     }
 
-    isMenuOpen = !isMenuOpen;
-});
+    document.querySelector(".more").addEventListener("click", () => {
+        const leftMenu = document.querySelector(".left");
 
-document.querySelector(".logo").addEventListener("click", () => {
-    if (isMenuOpen) {
-        closeMenu();
-    }
-});
+        if (!isMenuOpen) {
+            leftMenu.style.left = 0;
+        } else {
+            leftMenu.style.left = -85 + "%";
+        }
 
-
-document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", () => {
-        const folder = card.dataset.folder;
-        getSongs(folder)
-            .then(newSongs => {
-                // Update the global songs array
-                songs = newSongs;
-                // Update the playlist UI with the new songs
-                updatePlaylistUI();
-                // Play the first song from the updated playlist
-                playMusic(songs[0], true);
-            })
-            .catch(error => {
-                console.error("Error updating playlist:", error);
-            });
+        isMenuOpen = !isMenuOpen;
     });
-});
 
-function updatePlaylistUI() {
-    const songUl = document.querySelector(".songList").getElementsByTagName("ul")[0];
-    songUl.innerHTML = ""; // Clear the existing playlist
-    for (const song of songs) {
-        songUl.innerHTML += `<li><img class="albumimg" src="/assets/hplay.svg" alt="">
+    document.querySelector(".logo").addEventListener("click", () => {
+        if (isMenuOpen) {
+            closeMenu();
+        }
+    });
+
+
+    document.querySelectorAll(".card").forEach(card => {
+        card.addEventListener("click", () => {
+            const folder = card.dataset.folder;
+            getSongs(folder)
+                .then(newSongs => {
+                    // Update the global songs array
+                    songs = newSongs;
+                    // Update the playlist UI with the new songs
+                    updatePlaylistUI();
+                    // Play the first song from the updated playlist
+                    playMusic(songs[0], true);
+                })
+                .catch(error => {
+                    console.error("Error updating playlist:", error);
+                });
+        });
+    });
+
+    function updatePlaylistUI() {
+        const songUl = document.querySelector(".songList").getElementsByTagName("ul")[0];
+        songUl.innerHTML = ""; // Clear the existing playlist
+        for (const song of songs) {
+            songUl.innerHTML += `<li><img class="albumimg" src="/assets/hplay.svg" alt="">
                                 <div class="info">
                                     <div>${song.replaceAll("%20", " ")}</div>
                                     <div></div>
                                 </div>
                                 <img src="/assets/play.svg" alt="play now">
                             </li>`;
+        }
+
+        // Reattach event listeners to the new playlist items
+        Array.from(songUl.getElementsByTagName("li")).forEach(li => {
+            li.addEventListener("click", () => {
+                playMusic(li.querySelector(".info").firstElementChild.innerHTML);
+            });
+        });
     }
 
-    // Reattach event listeners to the new playlist items
-    Array.from(songUl.getElementsByTagName("li")).forEach(li => {
-        li.addEventListener("click", () => {
-            playMusic(li.querySelector(".info").firstElementChild.innerHTML);
-        });
-    });
-}
 
 
 }
